@@ -21,7 +21,7 @@ function LocationMarker() {
 }
 
 function MapComponent() {
-  const position = [40.505, -0.09];
+  const position = [ 40.710910, -73.995242];
 
   return (
     <div className="map-container">
