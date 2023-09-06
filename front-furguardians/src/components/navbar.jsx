@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
-
+import ApplyModal from './apply';
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+  const toggleModal = () => {
+    setIsModalOpen(!isModalOpen);
   };
 
   return (
@@ -41,7 +45,7 @@ function Navbar() {
         <li><a className="text-2xl text-gray-600 hover:text-gray-500" href="#">Connect 🐺</a></li>
       </ul>
       {/* eslint-disable jsx-a11y/anchor-is-valid */}
-      <a className="hidden lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 bg-gray-50 hover:bg-gray-100 text-sm text-gray-900 font-bold rounded-xl transition duration-200" href="#">Apply</a>
+      <a className="hidden lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 bg-gray-50 hover:bg-gray-100 text-sm text-gray-900 font-bold rounded-xl transition duration-200" onClick={toggleModal} href="#">Apply</a>
       {/* eslint-disable jsx-a11y/anchor-is-valid */}
       <a className="hidden lg:inline-block py-2 px-6 bg-blue-500 hover:bg-blue-600 text-sm text-white font-bold rounded-xl transition duration-200" href="#">Sign in </a>
      {/* mobile */}
@@ -89,7 +93,7 @@ function Navbar() {
             {/* eslint-disable jsx-a11y/anchor-is-valid */}
             <a className="block px-4 py-3 mb-3 leading-loose text-xs text-center font-semibold leading-none bg-gray-50 hover:bg-gray-100 rounded-xl" href="#">Sign in</a>
 {/* eslint-disable jsx-a11y/anchor-is-valid */}          
-            <a className="block px-4 py-3 mb-2 leading-loose text-xs text-center text-white font-semibold bg-blue-600 hover:bg-blue-700  rounded-xl" href="#">Apply</a>
+            <a className="block px-4 py-3 mb-2 leading-loose text-xs text-center text-white font-semibold bg-blue-600 hover:bg-blue-700  rounded-xl" onClick={toggleModal} href="#">Apply</a>
           </div>
           <p className="my-4 text-xs text-center text-gray-400">
             <span>Copyright © ttt 🖤 2023  </span>
@@ -98,6 +102,7 @@ function Navbar() {
       </nav>
     </div>
     {/* mobile end */}
+    <ApplyModal isOpen={isModalOpen} onClose={toggleModal} />
     </nav>
   );
 }
